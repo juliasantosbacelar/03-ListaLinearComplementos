@@ -1,4 +1,3 @@
-
 #include <iostream>
 using namespace std;
 
@@ -105,7 +104,7 @@ void inserirElemento()
 
 		if (pos != -1)
 		{
-			cout << "Elemento j� esta na lista" << endl;
+			cout << "Elemento já esta na lista" << endl;
 		}
 		else
 		{
@@ -123,7 +122,37 @@ void inserirElemento()
 void excluirElemento()
 {
 
+	if (nElementos == 0) {
+		cout << "Nao ha elementos para serem excluidos! \n";
+		return;
+	}
 
+	int numeroExcluir;
+	cout << "Digite o elemento que deseja excluir: \n";
+	cin >> numeroExcluir;
+
+	int pos = posicaoElemento(numeroExcluir); //Usa função já existente
+
+	if (pos == -1) {
+		cout << "Numero nao encontrado. \n";
+		return;
+	}
+
+	for (int i = pos; i < nElementos -1; i++) { //o último índice de um array é sempre quantidade de elementos menos 1.
+		lista[i] = lista[i + 1]; //puxa o da direita pra esquerda
+
+		/*Sempre que você tiver um vetor em C/C++ lembre da regra:
+
+tamanho = N
+último índice = N - 1
+
+Isso aparece em praticamente todo algoritmo de vetor.*/
+
+	}
+
+	nElementos--;
+
+	cout << "Elemento removido com sucesso\n";
 }
 
 void buscarElemento()
